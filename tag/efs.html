@@ -1,104 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <meta charset="utf-8" />
-        <title>Joe's Calepin - efs</title>
-        <link rel="stylesheet" href="https://joetechem.github.io/theme/css/main.css" />
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content=" efs">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://joetechem.github.io/favicon.ico">
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://joetechem.github.io/">Joe's Calepin </a></h1>
-                <nav><ul>
-                    <li><a href="https://joetechem.github.io/category/aws.html">AWS</a></li>
-                    <li><a href="https://joetechem.github.io/category/tutorials.html">Tutorials</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+        <title> efs - Joe's Calepin</title>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://joetechem.github.io/efs-high-level.html">EFS High Level</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2018-12-27T00:00:00-05:00">
-                Published: Thu 27 December 2018
-        </abbr>
+        <!-- Stylesheets -->
+        <link href="https://joetechem.github.io/theme/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://joetechem.github.io/theme/css/fonts.css" rel="stylesheet">
+        <link href="https://joetechem.github.io/theme/css/nest.css" rel="stylesheet">
+        <link href="https://joetechem.github.io/theme/css/pygment.css" rel="stylesheet">
+        <!-- /Stylesheets -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://joetechem.github.io/author/joe-seiler.html">Joe Seiler</a>
-        </address>
-<p>In <a href="https://joetechem.github.io/category/aws.html">AWS</a>.</p>
-<p>tags: <a href="https://joetechem.github.io/tag/aws.html">aws</a> <a href="https://joetechem.github.io/tag/ec2.html">ec2</a> <a href="https://joetechem.github.io/tag/efs.html">efs</a> <a href="https://joetechem.github.io/tag/developer.html">developer</a> <a href="https://joetechem.github.io/tag/cloud.html">cloud</a> </p>
-</footer><!-- /.post-info --><h1>EFS - Elastic File System</h1>
-<p>Amazon Elastic File System (Amazon EFS) is a file storage service for Amazon EC2 instances. EFS provides a simple interface that allows you to create and configure file systems quickly and easily.  </p>
-<h2>The "Elastic" in Elastic File System</h2>
-<ul>
-<li>Storage capacity is elastic, growing and shrinking automatically as you add and remove files  <ul>
-<li>so your applications have the storage they need, when they need it.  </li>
-</ul>
-</li>
-</ul>
-<p><center>  </p>
-<p><strong>You cannot mount an EBS volume to more than on EC2 instance at one time.</strong><br>
-This is what EFS allows you to do<br>
-<strong>EFS allows multiple EC2 instances to connect to it</strong>
-Data is stored across multiple AZ's within a region.<br>
-EFS is Block-Based storage (as opposed to Object-Based in S3)<br>
-You can share files with between EC2 instances (EFS and EC2 instances must share the same Security Group to do this)<br>
-Read after Write Consistency, like S3  </p>
-<p></center>  </p>
-<h2>EFS Features</h2>
-<ul>
-<li>Supports the Network File System version 4 (NFSv4) protocol  </li>
-<li>You only pay for the storage you use (no pre-provisioning required)  </li>
-<li>Can scale up to the PETABYTES  </li>
-<li>Can support thousands of concurrent NFS connections  </li>
-<li>Data is stored across multiple Availability Zones within a Region  </li>
-<li>Share files between EC2 instances  <ul>
-<li>Ensure they the same Security Group assignment  </li>
-<li>Ensure the Security Group has the NFS rule attached to it  </li>
-</ul>
-</li>
-</ul>
-<p>With EFS, a Load Balancer and EC2 instances provisioned with shared security groups and in the same AZ,<br>
-you can have multiple EC2 instances accessing the same files.  </p>
-<ul>
-<li>You can also apply to EFS, user-level and directory-level permissions  <ul>
-<li>So you can make certain directories, or files restricted in EFS,  <ul>
-<li>this would be universal across all EC2 instances.  </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+        <!-- RSS Feeds -->
+        <!-- /RSS Feeds -->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://joetechem.github.io/images/raspberry-pi-stock.jpg'); background-position: center; background-size: cover;">
+
+            <!-- Static navbar -->
+            <div class="container">
+                <div class="header-nav">
+                    <div class="header-logo">
+                        <a class="pull-left" href="https://joetechem.github.io/"><img class="mr20" src="https://joetechem.github.io/images/orange-logo.png" alt="logo">Joe's Calepin</a>
+                    </div>
+                    <div class="nav pull-right">
+                                <a href="https://joetechem.github.io">Home</a>
+                                <a href="https://joetechem.github.io">About</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /Static navbar -->
+
+            <!-- Header -->
+    <div class="container header-wrapper">
+        <div class="row">
+              <div class="col-lg-12">
+                  <div class="header-content">
+                      <h1 class="header-title text-uppercase"> : #efs</h1>
+                      <div class="header-underline"></div>
+                      <p class="header-subtitle header-subtitle-homepage"> #efs</p>
+                  </div>
+              </div>
+        </div>
+    </div>
+            <!-- /Header -->
+
+        </div>
+        <!-- /Header -->
+
+
+        <!-- Content -->
+    <div class="archive-container">
+        <div class="container content archive">
+            <h2><a href="https://joetechem.github.io/tag/efs.html">efs</a></h2>
+            <dl class="dl-horizontal">
+            	<dt>2018-12-27</dt>
+            	<dd><a href="https://joetechem.github.io/efs-high-level.html">EFS High Level</a></dd>
+            </dl>
+        </div>
+    </div>
+        <!-- /Content --> 
+
+        <!-- Footer -->
+        <div class="footer gradient-2">
+            <div class="container footer-container ">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title"></div>
+                        <ul class="list-unstyled">
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="https://www.linkedin.com/in/josef-seiler-315560111">linkedin</a></li>
-                            <li><a href="https://github.com/joetechem">github</a></li>
-                            <li><a href="#">twitter</a></li>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title"></div>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.linkedin.com/in/josef-seiler-315560111" target="_blank">linkedin</a></li>
+                            <li><a href="https://github.com/joetechem" target="_blank">github</a></li>
+                            <li><a href="#" target="_blank">twitter</a></li>
                         </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-</body>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title"></div>
+                        <ul class="list-unstyled">
+                            <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+                            <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+                            <li><a href="#" target="_blank">You can modify those links in your config file</a></li>
+                        </ul>
+                    </div> 
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <p class="pull-right text-right">
+                            <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
+                            <small><em>Theme and code by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br/>
+                            <small></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Footer -->
+    </body>
 </html>

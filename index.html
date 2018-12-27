@@ -1,404 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <meta charset="utf-8" />
-        <title>Joe's Calepin</title>
-        <link rel="stylesheet" href="https://joetechem.github.io/theme/css/main.css" />
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Joe's Calepin, ">
+        <meta name="keywords" content="">
+        <link rel="icon" href="https://joetechem.github.io/favicon.ico">
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://joetechem.github.io/">Joe's Calepin </a></h1>
-                <nav><ul>
-                    <li><a href="https://joetechem.github.io/category/aws.html">AWS</a></li>
-                    <li><a href="https://joetechem.github.io/category/tutorials.html">Tutorials</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+        <title>Tech Em Blog - Joe's Calepin</title>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://joetechem.github.io/aws-cli.html">AWS CLI</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2018-12-27T00:00:00-05:00">
-                Published: Thu 27 December 2018
-        </abbr>
+        <!-- Stylesheets -->
+        <link href="https://joetechem.github.io/theme/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://joetechem.github.io/theme/css/fonts.css" rel="stylesheet">
+        <link href="https://joetechem.github.io/theme/css/nest.css" rel="stylesheet">
+        <link href="https://joetechem.github.io/theme/css/pygment.css" rel="stylesheet">
+        <!-- /Stylesheets -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://joetechem.github.io/author/joe-seiler.html">Joe Seiler</a>
-        </address>
-<p>In <a href="https://joetechem.github.io/category/aws.html">AWS</a>.</p>
-<p>tags: <a href="https://joetechem.github.io/tag/aws.html">aws</a> <a href="https://joetechem.github.io/tag/ec2.html">ec2</a> <a href="https://joetechem.github.io/tag/developer.html">developer</a> <a href="https://joetechem.github.io/tag/cloud.html">cloud</a> <a href="https://joetechem.github.io/tag/cli.html">cli</a> </p>
-</footer><!-- /.post-info --><h1>AWS CLI - Using IAM User Credentials</h1>
-<p><a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">AWS - Configure CLI</a>  </p>
-<p><a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html">AWS - CLI Profiles</a>  </p>
-<h2>Firing Up AWS CLI</h2>
-<h4>Configure AWS Credentials</h4>
-<p><em>Use the credentials of the aws account that has proper aws services access for what you are doing.</em><br>
-Get the credentials from the <code>.csv</code> file you save and put somewhere safe when you first created the aws user account (either through IAM user, or your root aws account)<br>
-<em>while in root:</em>  </p>
-<div class="highlight"><pre><span></span>aws configure
-AWS Access Key ID <span class="o">[</span>None<span class="o">]</span>: access key ID here  
-AWS Secret Access Key <span class="o">[</span>None<span class="o">]</span>: secret access key here
-Default region name <span class="o">[</span>None<span class="o">]</span>: your region
-Default output format <span class="o">[</span>None<span class="o">]</span>:
-</pre></div>
+        <!-- RSS Feeds -->
+        <!-- /RSS Feeds -->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
 
-<h4>Test an AWS CLI command:</h4>
-<div class="highlight"><pre><span></span>aws s3 ls
-</pre></div>
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://joetechem.github.io/images/raspberry-pi-stock.jpg'); background-position: center; background-size: cover;">
+
+            <!-- Static navbar -->
+            <div class="container">
+                <div class="header-nav">
+                    <div class="header-logo">
+                        <a class="pull-left" href="https://joetechem.github.io/"><img class="mr20" src="https://joetechem.github.io/images/orange-logo.png" alt="logo">Joe's Calepin</a>
+                    </div>
+                    <div class="nav pull-right">
+                                <a href="https://joetechem.github.io">Home</a>
+                                <a href="https://joetechem.github.io">About</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /Static navbar -->
+
+            <!-- Header -->
+    <div class="container header-wrapper">
+        <div class="row">
+              <div class="col-lg-12">
+                  <div class="header-content">
+                      <h1 class="header-title">Tech Em Blog</h1>
+                      <div class="header-underline"></div>
+                      <p class="header-subtitle header-subtitle-homepage">Be more than a user of technology</p>
+                  </div>
+              </div>
+        </div>
+    </div>
+            <!-- /Header -->
+
+        </div>
+        <!-- /Header -->
 
 
-<p>Above command will show you all your buckets from around the world (because S3 is a global service)  </p>
-<h4>Get list of AWS CLI commands for particular service:</h4>
-<div class="highlight"><pre><span></span>aws s3 <span class="nb">help</span>
-</pre></div>
+        <!-- Content -->
+    
+    <div class="archive-container">
+        <div class="container content archive">
+            <h2><a href="https://joetechem.github.io/index.html">Last Posts </a></h2>
+            <dl class="dl-horizontal">
+                <dt>2018-12-27</dt>
+                <dd><a href="https://joetechem.github.io/aws-cli.html">AWS CLI</a></dd>
+                <dt>2018-12-27</dt>
+                <dd><a href="https://joetechem.github.io/ec2-summary.html">EC2 Summary</a></dd>
+                <dt>2018-12-27</dt>
+                <dd><a href="https://joetechem.github.io/efs-high-level.html">EFS High Level</a></dd>
+                <dt>2018-12-26</dt>
+                <dd><a href="https://joetechem.github.io/ready-to-go-live.html">Ready To Go Live</a></dd>
+            </dl>
+        </div>
+    </div>
+        <!-- /Content --> 
 
-
-<h4>See where the credentials are being stored:</h4>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> ~
-ls
-<span class="nb">cd</span> .aws
-ls
-nano credentials
-</pre></div>
-
-
-<p>Because these credentials could potentially be "hacked", it is MORE SECURE to use IAM Roles instead of using your root account for provisioning, deploying, and documenting (i.e. GitHub).  </p>
-<h2>Self Destruct EC2 Instance from AWS CLI</h2>
-<h4>get EC2 instance's ID</h4>
-<div class="highlight"><pre><span></span>aws ec2 describe-instances
-</pre></div>
-
-
-<p>Locate the Instance ID of the one you want terminated.  </p>
-<div class="highlight"><pre><span></span>aws ec2 terminate-instances --instance-ids i-0a6888aa0caabd8f3
-</pre></div>
-
-
-<hr>
-<p><strong>Having User credentials stored on an EC2 instance is a HUGE security risk.</strong>  </p>
-<p>Do not use IAM Users for the command line wherever possible, but if you are using it on your laptop, desktop or anything outside of AWS, then you will need a User with programmatic access.  </p>
-<p>So, if you accidently upload your code to GitHub that has your Access Key ID and Secret Access Key, the best (only) way to resolve the issue is to delete the User and create a new one, or regenerate the credentials.  </p>
-<p>Use IAM Roles over IAM Users wherever possible.  </p>
-<hr>
-<h1>AWS CLI - Using Roles</h1>
-<h2>Identity Access Management Roles</h2>
-<p><a href="https://aws.amazon.com/blogs/security/new-attach-an-aws-iam-role-to-an-existing-amazon-ec2-instance-by-using-the-aws-cli/">AWS Switching Roles using CLI</a>  </p>
-<p><a href="https://aws.amazon.com/blogs/security/easily-replace-or-attach-an-iam-role-to-an-existing-ec2-instance-by-using-the-ec2-console/">AWS Switching Roles using Console</a></p>
-<p>If you used an IAM User account to provision a cluster of EC2 instances, and someone gained access to the User credentials for one of them, you would have to change the credentials for every other EC2 instance. This is an administrated BURDEN!  </p>
-<p><strong>IAM Roles are global, it does not matter which you Region you create it in, it will be avilable across all Regions.</strong>  </p>
-<p><strong>It is possible to attach a Role to running EC2 instance</strong>  </p>
-<h2>IAM/S3 Lab</h2>
-<ul>
-<li>Create a new IAM Role with S3 Full Access  </li>
-<li>Launch an EC2 instance with the S3 Full Access role attached  </li>
-<li>SSH into the new instance  </li>
-</ul>
-<h4>See contents of S3</h4>
-<div class="highlight"><pre><span></span>aws s3 ls
-</pre></div>
-
-
-<p>This command works straight away, because the IAM Role with full S3 admin access is attached to this instance, giving it the permissions it needs to access S3.  </p>
-<p>You can test by following steps above to find the secret directory with the credentials (it isn't there).  </p>
-<ul>
-<li>
-<p>When using an IAM Role  </p>
-<ul>
-<li>Don't need to store your credentials locally</li>
-<li>if your credentials change, you don't need to login into your EC2 instances and update them  </li>
-</ul>
-</li>
-<li>
-<p>If you don't provision the EC2 instance with the IAM Role not attached,  </p>
-<ul>
-<li>You can attach a Role to an EC2 instance while it is running<ul>
-<li>via the CLI or AWS Console  </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1>CLI Commands - Developer Associate Exam - lab</h1>
-<ul>
-<li>Create new IAM Role:  <ul>
-<li>Service = EC2  </li>
-<li>Permissions = Admin Access  </li>
-</ul>
-</li>
-<li>Create new EC2 Instance with IAM Role attached  </li>
-</ul>
-<h4>Provision an EC2 Instance from the CLI:</h4>
-<div class="highlight"><pre><span></span>aws configure  
-<span class="c1"># leave access key ID and secret access blank  </span>
-<span class="c1"># Use the Region you are in for the Default region name</span>
-<span class="c1"># leave output format blank</span>
-</pre></div>
-
-
-<h2>3 Specific Commands for the Developer Associate Exam</h2>
-<p><a href="https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:">AWS CLI Command Reference</a>  </p>
-<p>You don't need to memorize any commands, just need to recognize the language they use.  </p>
-<p><strong>Four important commands to remember:</strong><br>
-1. Describe instances you currently have running<br>
-    - <code>aws ec2 describe-instances</code><br>
-2. Describe instances available to you, that you can provision instances from<br>
-    - <code>aws ec2 describe-images</code><br>
-3. Create an instance<br>
-    - <code>aws ec2 run-instances</code>  </p>
-<div class="highlight"><pre><span></span> *Don&#39;t confuse start-instances with run-instances*
-</pre></div>
-
-
-<ol>
-<li>Terminate an instance  <ul>
-<li><code>aws ec2 terminate-instances</code>  </li>
-</ul>
-</li>
-</ol>
-<p><strong>Example</strong>  </p>
-<h4>To launch an instance in EC2-VPC:</h4>
-<p>*The key pair named <code>MyKeyPair</code> and the security group <code>sg-903004f8</code> must exist.  </p>
-<div class="highlight"><pre><span></span>aws ec2 run-instances --image-id ami-abc12345 --count <span class="m">1</span> --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-1a2b3c4d --subnet-id subnet-6e7f829e
-</pre></div>
-
-
-<h4>Terminate Instance Command</h4>
-<p><a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html">terminate-instance</a>  </p>
-<div class="highlight"><pre><span></span>aws ec2 terminate-instances --instance-ids i-1234567890abcdef0
-</pre></div>
-
-
-<hr>
-<h1>Bash Scripting</h1>
-<p><strong>Bash Script:</strong> a list of AWS command lines that will be run after an instance EC2 launches.  </p>
-<p><strong>Good idea to create your bash script while trying out the commands in a test instance</strong>  </p>
-<ul>
-<li>created <em>index.html</em>  </li>
-<li>created new S3 bucket, <em>mysimplebashbucket</em>  </li>
-</ul>
-<p><strong>All S3 buckets are private by default</strong><br>
-* Create new IAM Role:<br>
-    - Service = EC2<br>
-    - Permissions = Admin Access  </p>
-<ul>
-<li>
-<p>started <em>simplebashscript.txt</em><br>
-<code>bash  
-    #!/bin/bash
-    yum update -y</code>  </p>
-</li>
-<li>
-<p>created EC2 instance with new IAM Role attached  </p>
-<ul>
-<li>SSH into instance  </li>
-<li><code>yum install httpd -y</code> to install Apache  <ul>
-<li>update bash txt with new commands  </li>
-</ul>
-</li>
-<li><code>service httpd start</code> start the Apache service  </li>
-<li><code>chkconfig httpd on</code> make sure service automatically starts in case instance reboots  </li>
-<li><code>aws s3 ls</code> check contents of S3 (also good to check the correct Role/Permissions are attached)</li>
-<li><code>aws s3 cp s3://mysimplebashbucket/index.html /var/www/html</code> copy from s3 bucket to /var/www/html directory  </li>
-</ul>
-</li>
-</ul>
-<h1>Install PHP and Composer</h1>
-<h2>Lab - Setting Up the PHP SDK</h2>
-<h4>bash script for S3</h4>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-yum update -y
-yum install httpd24 php56 git -y
-service httpd start
-chkconfig httpd on
-<span class="nb">cd</span> /var/www/html
-<span class="nb">echo</span> <span class="s2">&quot;&lt;?php phpinfo();?&gt;&quot;</span> &gt; test.php
-git clone https://github.com/acloudguru/s3
-</pre></div>
-
-
-<p>Type in the instance's <code>publicIPaddress/test.php</code> into browser, to check if the script worked.  </p>
-<p>From https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/getting-started_installation.html insert the commands to install AWS SDK for PHP version 3:  </p>
-<h4>while in root, /var/www/html</h4>
-<div class="highlight"><pre><span></span>curl -sS https://getcomposer.org/installer <span class="p">|</span> php
-php composer.phar require aws/aws-sdk-php
-</pre></div>
-
-
-<p>Everytime you are using a PHP script to use the SDK, you need to run the <code>autoload.php</code> first  </p>
-<h4>autoload.php contents:</h4>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="c1">// autoload.php @generated by Composer</span>
-
-<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/composer/autoload_real.php&#39;</span><span class="p">;</span>
-
-<span class="k">return</span> <span class="nx">ComposerAutoloaderInit3b67dfc3d40d2cd9089a5411e8f40636</span><span class="o">::</span><span class="na">getLoader</span><span class="p">();</span>
-</pre></div>
-
-
-<h2>Lab - Interacting with S3 using the PHP SDK</h2>
-<h4>While logged in as root in the same instance as above:</h4>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> /var/www/html/s3
-ls
-nano createbucket.php
-</pre></div>
-
-
-<p>What happens:<br>
-* Type instance's <code>publicIPaddress/createbucket.php</code> in browser<br>
-    - a new bucket is created in S3<br>
-    - click the link that comes up on each page<br>
-        - first link, uploads a simple text file<br>
-        - second link, to read the file<br>
-        - third link, deletes the file object from the bucket<br>
-        - fourth link, deletes the bucket if it is empty (and it is)  </p>
-<h1>EC2 Instance Metadata</h1>
-<p>How to get an instance's matadata while logged into it.  </p>
-<p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">aws source</a>  </p>
-<h4>IP Address to remember for the exam:</h4>
-<div class="highlight"><pre><span></span>curl http://169.254.169.254/latest/meta-data/  
-</pre></div>
-
-
-<h4>Get instance's public IP address:</h4>
-<div class="highlight"><pre><span></span>curl http://169.254.169.254/latest/meta-data/public-ipv4
-</pre></div>
-
-
-<p><strong>Returns META DATA, not user data!</strong><br>
-<strong>Use IP address, 169.254.169.254</strong>    </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://joetechem.github.io/ec2-summary.html" rel="bookmark"
-                           title="Permalink to EC2 Summary">EC2 Summary</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-27T00:00:00-05:00">
-                Published: Thu 27 December 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://joetechem.github.io/author/joe-seiler.html">Joe Seiler</a>
-        </address>
-<p>In <a href="https://joetechem.github.io/category/aws.html">AWS</a>.</p>
-<p>tags: <a href="https://joetechem.github.io/tag/aws.html">aws</a> <a href="https://joetechem.github.io/tag/ec2.html">ec2</a> <a href="https://joetechem.github.io/tag/developer.html">developer</a> <a href="https://joetechem.github.io/tag/cloud.html">cloud</a> </p>
-</footer><!-- /.post-info -->                <h1>EC2 - Summary/Exam Tips</h1>
-<p>https://aws.amazon.com/ec2/  </p>
-<p>https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html  </p>
-<ul>
-<li>
-<p>Know differences between;  </p>
-<ul>
-<li>On-Demand  </li>
-<li>Spot  </li>
-<li>Reserved  </li>
-<li>Dedicated Hosts  </li>
-</ul>
-</li>
-<li>
-<p>Remember with spot instances;  </p>
-<ul>
-<li>If you terminate the instance, you pay for the hour  </li>
-<li>If AWS terminates the spot instance (becasue spot price …</li></ul></li></ul>
-                <a class="readmore" href="https://joetechem.github.io/ec2-summary.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://joetechem.github.io/efs-high-level.html" rel="bookmark"
-                           title="Permalink to EFS High Level">EFS High Level</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-27T00:00:00-05:00">
-                Published: Thu 27 December 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://joetechem.github.io/author/joe-seiler.html">Joe Seiler</a>
-        </address>
-<p>In <a href="https://joetechem.github.io/category/aws.html">AWS</a>.</p>
-<p>tags: <a href="https://joetechem.github.io/tag/aws.html">aws</a> <a href="https://joetechem.github.io/tag/ec2.html">ec2</a> <a href="https://joetechem.github.io/tag/efs.html">efs</a> <a href="https://joetechem.github.io/tag/developer.html">developer</a> <a href="https://joetechem.github.io/tag/cloud.html">cloud</a> </p>
-</footer><!-- /.post-info -->                <h1>EFS - Elastic File System</h1>
-<p>Amazon Elastic File System (Amazon EFS) is a file storage service for Amazon EC2 instances. EFS provides a simple interface that allows you to create and configure file systems quickly and easily.  </p>
-<h2>The "Elastic" in Elastic File System</h2>
-<ul>
-<li>Storage capacity is elastic, growing and shrinking automatically …</li></ul>
-                <a class="readmore" href="https://joetechem.github.io/efs-high-level.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://joetechem.github.io/ready-to-go-live.html" rel="bookmark"
-                           title="Permalink to Ready To Go Live">Ready To Go Live</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-12-26T00:00:00-05:00">
-                Published: Wed 26 December 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://joetechem.github.io/author/joe-seiler.html">Joe Seiler</a>
-        </address>
-<p>In <a href="https://joetechem.github.io/category/tutorials.html">Tutorials</a>.</p>
-<p>tags: <a href="https://joetechem.github.io/tag/pelican.html">pelican</a> <a href="https://joetechem.github.io/tag/wp.html">wp</a> <a href="https://joetechem.github.io/tag/cpanel.html">cpanel</a> <a href="https://joetechem.github.io/tag/whm.html">whm</a> </p>
-</footer><!-- /.post-info -->                <h1><strong>Standard</strong> WordPress Site Rollout</h1>
-<h4><em>10,000 ft.</em> Overview of <em>Standard</em> Steps:</h4>
-<ul>
-<li>Backup the Site Files &amp; Database  </li>
-<li>Update permalinks  </li>
-</ul>
-<h1>Backup the Website &amp; Database</h1>
-<p>It is always a good idea to make a copy of your website, before undergoing major changes. Below are steps for taking a <em>snapshot</em> of your website, Site …</p>
-                <a class="readmore" href="https://joetechem.github.io/ready-to-go-live.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
+        <!-- Footer -->
+        <div class="footer gradient-2">
+            <div class="container footer-container ">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title"></div>
+                        <ul class="list-unstyled">
                         </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="https://www.linkedin.com/in/josef-seiler-315560111">linkedin</a></li>
-                            <li><a href="https://github.com/joetechem">github</a></li>
-                            <li><a href="#">twitter</a></li>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title"></div>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.linkedin.com/in/josef-seiler-315560111" target="_blank">linkedin</a></li>
+                            <li><a href="https://github.com/joetechem" target="_blank">github</a></li>
+                            <li><a href="#" target="_blank">twitter</a></li>
                         </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-</body>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+                        <div class="footer-title"></div>
+                        <ul class="list-unstyled">
+                            <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+                            <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+                            <li><a href="#" target="_blank">You can modify those links in your config file</a></li>
+                        </ul>
+                    </div> 
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <p class="pull-right text-right">
+                            <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
+                            <small><em>Theme and code by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br/>
+                            <small></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Footer -->
+    </body>
 </html>
