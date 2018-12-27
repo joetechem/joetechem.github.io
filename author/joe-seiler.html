@@ -1,128 +1,293 @@
-<!doctype html>
-<html lang="en" itemscope itemtype="http://schema.org/Person">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <!-- Site Meta Data -->
-  <title>Joe's Calepin - Joe Seiler</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Joe Seiler">
-
-  <link rel="shortcut icon" href="url-to-favicon">
-
-  <!-- schema.org -->
-  <meta itemprop="name" content="Joe's Calepin">
-  <meta itemprop="image" content="">
-  <meta itemprop="description" content="">
-
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-  <!-- Style Meta Data -->
-  <link rel="stylesheet" href="https://joetechem.github.io/theme/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="https://joetechem.github.io/theme/css/pygments.css" type="text/css" />
-
-  <!-- Feed Meta Data -->
-
-  <!-- Twitter Feed -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="twitter-user-name">
-  <meta name="twitter:image" content="">
-
-<meta name="twitter:creator" content="twitter-user-name">
-<meta name="twitter:url" content="https://joetechem.github.io">
-<meta name="twitter:title" content="Joe's Calepin">
-<meta name="twitter:description" content="Programmer and Web Developer">
-
-<!-- Facebook Meta Data -->
-<meta property="og:title" content="Joe's Calepin" />
-<meta property="og:description" content="Programmer and Web Developer" />
-<meta property="og:image" content="" />
-
-<meta name="twitter:creator" content="twitter-user-name">
-<meta name="twitter:url" content="https://joetechem.github.io/author/joe-seiler.html">
-<meta name="twitter:title" content="Joe's Calepin ~ Joe Seiler">
-<meta name="twitter:description" content="Articles de Joe Seiler">
-
-<!-- Facebook Meta Data -->
-<meta property="og:title" content="Joe's Calepin ~ Joe Seiler" />
-<meta property="og:description" content="Articles de Joe Seiler" />
-<meta property="og:image" content="" />
+        <meta charset="utf-8" />
+        <title>Joe's Calepin - Joe Seiler</title>
+        <link rel="stylesheet" href="https://joetechem.github.io/theme/css/main.css" />
 </head>
 
-<body>
-  <!-- Sidebar -->
-  <aside>
-    <!--<center><a href="https://joetechem.github.io"><img id="avatar" src=""></a></center>-->
-    <h1>Joe's Calepin</h1>
-      <p>Programmer and Web Developer</p>
-    <br>
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://joetechem.github.io/">Joe's Calepin </a></h1>
+                <nav><ul>
+                    <li><a href="https://joetechem.github.io/category/aws.html">AWS</a></li>
+                    <li><a href="https://joetechem.github.io/category/tutorials.html">Tutorials</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
 
-      <a class="twitter-follow-button"
-      href="https://twitter.com/twitter-user-name"
-      data-show-count="false"
-      data-lang="en">
-      Follow @twitterdev
-      </a>
-      <script type="text/javascript">
-      window.twttr = (function (d, s, id) {
-        var t, js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src= "https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
-        return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
-      }(document, "script", "twitter-wjs"));
-      </script>
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://joetechem.github.io/ec2-summary.html">EC2 Summary</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-12-27T00:00:00-05:00">
+                Published: Thu 27 December 2018
+        </abbr>
 
-    <nav class="nav">
-      <ul class="list-bare">
-      
-          <li><a class="nav__link" href="https://joetechem.github.io">Blog</a></li>
-         
-         
-      </ul>
-    </nav>
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://joetechem.github.io/author/joe-seiler.html">Joe Seiler</a>
+        </address>
+<p>In <a href="https://joetechem.github.io/category/aws.html">AWS</a>.</p>
+<p>tags: <a href="https://joetechem.github.io/tag/aws.html">aws</a> <a href="https://joetechem.github.io/tag/ec2.html">ec2</a> <a href="https://joetechem.github.io/tag/developer.html">developer</a> <a href="https://joetechem.github.io/tag/cloud.html">cloud</a> </p>
+</footer><!-- /.post-info --><h1>EC2 - Summary/Exam Tips</h1>
+<p>https://aws.amazon.com/ec2/  </p>
+<p>https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html  </p>
+<ul>
+<li>
+<p>Know differences between;  </p>
+<ul>
+<li>On-Demand  </li>
+<li>Spot  </li>
+<li>Reserved  </li>
+<li>Dedicated Hosts  </li>
+</ul>
+</li>
+<li>
+<p>Remember with spot instances;  </p>
+<ul>
+<li>If you terminate the instance, you pay for the hour  </li>
+<li>If AWS terminates the spot instance (becasue spot price went above bid price), you get the hour it was terminated in for free.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>EC2 Instance Types (DrMcGIFTpx)  <ul>
+<li>D = D2: Dense Storage --&gt; Fileservers/Data Warehousing/Hadoop   </li>
+<li>R = R4: Memory Optimized (think RAM) --&gt; Memory Intensive Apps/DBs  </li>
+<li>M = M4: General Purpose --&gt; Good for production, App Servers  </li>
+<li>C = C4: Compue Optimized --&gt; CPU Intensive Apps/DBs  </li>
+<li>G = G2: Graphics Intensive --&gt; Viedo Encoding/3D App Streaming  </li>
+<li>I = I2: High Speed Storage (IOPS) --&gt; NoSQL DBs, Data Warehousing etc  </li>
+<li>F = F1: Field Programmable Gate Array --&gt; Hardware accleration for your code  </li>
+<li>T = T2: Lowest Cost General Purpose --&gt; Web Servers/Small DBs, usually used for test/dev  </li>
+<li>P = P2: Graphics/General Purpose GPU (think pictures) --&gt; Machine Learning, Bitcoin Mining etc  </li>
+<li>X = X1: Memory Optimized (Xtreme RAM) --&gt; SAP HANA/Apache Spark etc  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>EBS Consists of:  </p>
+<ul>
+<li>SSD, General Purpose - GP2 (Up to 10,000 IOPS)  </li>
+<li>SSD, Provisioned IOPS - IO1 (More than 10,000 IOPS)  </li>
+<li>HDD, Throuput Optimized - ST1 - Frequently accessed workloads (can't be used as boot volumes, can only be additional attached volume to an EC2 instance)  </li>
+<li>HDD, Cold - SC1 - less frequently accessed data (can't be used as boot volumes, can only be additional attached volume to an EC2 instance)  </li>
+<li>HDD, Magnetic - Standard - cheap, infrequently accessed storage (can have this as boot volume)  </li>
+</ul>
+</li>
+<li>
+<p><strong>You cannot mount 1 EBS volume to multiple EC2 instances, instead use EFS</strong>    </p>
+</li>
+<li>
+<p>Termination Protection is turned off by default, you must turn it on.  </p>
+</li>
+<li>On an EBS-Backed instance, the default action is for the root EBS volume to be deleted when the instance is terminated.  </li>
+<li>Root Volumes cannot be encrypted by default, you need a third party tool (such as bit locker etc) to encrypt the root volume  </li>
+<li>Additional volumes can be encrypted  </li>
+</ul>
+<hr>
+<h2>Volumes &amp; Snapshots</h2>
+<ul>
+<li>
+<p>Volumes exist on EBS  </p>
+<ul>
+<li>Virtual Hard Disk  </li>
+</ul>
+</li>
+<li>
+<p>Snapshots exist on S3</p>
+<ul>
+<li>You can take a snapshot of a volume, this will store that volume on S3.  </li>
+<li>Snapshots are point-in-time copies of Volumes  </li>
+<li>Snapshots are incremental, this means that only the blocks that have changed since your last snapshot are moved to S3.  </li>
+<li>The first snapshot takes some time to create, additional snapshots afterwards are created faster  </li>
+</ul>
+</li>
+</ul>
+<h2>Volumes vs Snapshot - Security</h2>
+<ul>
+<li>Snapshots of encrypted volumes are encrypted automatically.  </li>
+<li>Volumes restored from encrypted snapshots are encrypted automatically.  </li>
+<li>You can share snapshots, but only if the are unencrypted.  <ul>
+<li>These snpashots can be shared with other AWS accounts or you can make them public in the Amazon Marketplace  </li>
+</ul>
+</li>
+</ul>
+<h2>Snapshots of Root Device Volumes</h2>
+<ul>
+<li>To create a snapshot for Amazon EBS volumes that serve as root devices, you should stop the instance before taking the snapshot  </li>
+</ul>
+<h2>EBS vs Instance Store</h2>
+<h4>How can I take a Snapshot of a RAID Array?</h4>
+<ul>
+<li>
+<p>Problem - Take a snapshot, the snapshot excludes data held in the cache by applications and the OS. This tends to not matter on a single volumes; however, using multiple volumes in a RAID array, this can be a problem due to interdependencies of the array.  </p>
+</li>
+<li>
+<p>Solution - Take an application consistent snapshot  </p>
+<ul>
+<li>Stop the application from writing to disk  </li>
+<li>Flush all caches to the disk.  </li>
+<li>How can we do this?  <ul>
+<li>Freeze the file system  </li>
+<li>Unmount the RAID Array  </li>
+<li>Shutting down the associated EC2 instance  </li>
+<li>Then take the snapshot  </li>
+<li><em>essentially, <strong>you are trying to stop any kind of I/O being read from that RAID Array</strong></em> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>CloudWatch</h2>
+<ul>
+<li>Standard Monitoring = 5 Min  </li>
+<li>
+<p>Detailed Monitoring = 1 Minute  </p>
+</li>
+<li>
+<p>CloudWatch is for performance monitoring  </p>
+</li>
+<li>CloudTrail is for auditing  </li>
+</ul>
+<h3>What can I do with CloudWatch?</h3>
+<ul>
+<li><strong>Dashboards</strong> - creates awesome dashboards to see what is happening with your AWS environment  </li>
+<li><strong>Alarms</strong> = Allows you to set Alarms that notify you when particular thresholds are hit.  </li>
+<li><strong>Events</strong> - CloudWatch Events helps you to respond to state changes in your AWS resources  </li>
+<li><strong>Logs</strong> - CloudWatch Logs helps you to aggregate, monitor, and store logs.  </li>
+</ul>
+<h2>IAM Roles</h2>
+<ul>
+<li>Roles are more secure than storing your access key and secret access key on individual EC2 instances.  </li>
+<li>Roles are easier to manage from a security perspective  </li>
+<li>Roles can be assigned to an EC2 instance AFTER it has been provisioned using both the command line and the AWS console. -takes effect immediately  <ul>
+<li>can also change the role's policies at any time -also takes effect immediately  </li>
+</ul>
+</li>
+<li>Roles are universal, you can use them in any Region  </li>
+</ul>
+<h2>Instance Met-data</h2>
+<ul>
+<li>Use to get info about an instance (such as public ip)  </li>
+<li><code>curl http://169.256.169.256/latest/meta-data/</code>  </li>
+</ul>
+<h2>EFS Features</h2>
+<ul>
+<li>Supports the Network File System 4 (NFSv4) protocol  </li>
+<li>You only pay for the storage you use (no pre-provisioning required)  </li>
+<li>Can scale up to the PETABYTES  </li>
+<li>Can support thousands of concurrent NFS connection  </li>
+<li>Data is stored across multiple AZ's within a region  </li>
+<li>Read After Write Consistency  </li>
+</ul>
+<h2>Lambda</h2>
+<ul>
+<li>A compute service where you can upload your code and create a Lambda Function.  </li>
+<li>AWS takes care of the provisioning and managing the servers that you use to run the code.  </li>
+<li>Don't have to worry about OS's, patching, scaling, etc.  </li>
+<li>You can use Lambda ins the following ways:  <ul>
+<li>As an event-driven compute service where AWS Lambda runs your code in response to events. These events could be changes to data in an AMazon S3 bucket or an Amazon DynamoDB table.  </li>
+<li>As a compute service to run your code in response to HTTP requests using Amazon API Gateway or API calls made using AWS SDKs. This is what A Cloud Guru does.  </li>
+</ul>
+</li>
+</ul>
+<h2>ECS - Elastic Container Service</h2>
+<ul>
+<li>The Elastic Container Service is a service that manages running Docker containers on a group of your EC2 instances.  </li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
 
-    <p class="social">
-        <a href="https://www.linkedin.com/in/josef-seiler-315560111" target="_blank" ><img src="https://joetechem.github.io/theme/images/icons/linkedin.png"></a>
-        <a href="https://github.com/joetechem" target="_blank" ><img src="https://joetechem.github.io/theme/images/icons/github.png"></a>
-        <a href="#" target="_blank" ><img src="https://joetechem.github.io/theme/images/icons/twitter.png"></a>
-    </p>
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://joetechem.github.io/efs-high-level.html" rel="bookmark"
+                           title="Permalink to EFS High Level">EFS High Level</a></h1>
+                </header>
 
-    <!--
-    <h2>Categories</h2>
-    <ul class="navbar">
-      <li><a href="https://joetechem.github.io/category/tutorials.html">Tutorials</a></li>
-    </ul> 
-    -->
-  </aside>
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-27T00:00:00-05:00">
+                Published: Thu 27 December 2018
+        </abbr>
 
-  <!-- Content -->
-  <article>
-<h1 class="title">Hi, I'm Joe Seiler</h1>
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://joetechem.github.io/author/joe-seiler.html">Joe Seiler</a>
+        </address>
+<p>In <a href="https://joetechem.github.io/category/aws.html">AWS</a>.</p>
+<p>tags: <a href="https://joetechem.github.io/tag/aws.html">aws</a> <a href="https://joetechem.github.io/tag/ec2.html">ec2</a> <a href="https://joetechem.github.io/tag/efs.html">efs</a> <a href="https://joetechem.github.io/tag/developer.html">developer</a> <a href="https://joetechem.github.io/tag/cloud.html">cloud</a> </p>
+</footer><!-- /.post-info -->                <h1>EFS - Elastic File System</h1>
+<p>Amazon Elastic File System (Amazon EFS) is a file storage service for Amazon EC2 instances. EFS provides a simple interface that allows you to create and configure file systems quickly and easily.  </p>
+<h2>The "Elastic" in Elastic File System</h2>
+<ul>
+<li>Storage capacity is elastic, growing and shrinking automatically …</li></ul>
+                <a class="readmore" href="https://joetechem.github.io/efs-high-level.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
-<ol>
-	<h2 class="latest">Latest Posts</h2>
-	<li class="post_list"><p class="post_entry">
-		<h2 class="post_title"><a href="https://joetechem.github.io/ready-to-go-live.html" rel="bookmark" title="Permalink to Ready To Go Live">Ready To Go Live</a></h2>
-		<a href="https://joetechem.github.io/author/joe-seiler.html">@Joe Seiler</a>
-		<span> in </span>
-		<span class="post_category"><a href="https://joetechem.github.io/category/tutorials.html" rel="bookmark" title="Permalink to Tutorials">[ Tutorials ]</a></span>
-		<span class="post_date">Wed 26 December 2018</span>
-	</li>
-</ol>
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://joetechem.github.io/ready-to-go-live.html" rel="bookmark"
+                           title="Permalink to Ready To Go Live">Ready To Go Live</a></h1>
+                </header>
 
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-26T00:00:00-05:00">
+                Published: Wed 26 December 2018
+        </abbr>
 
-  </article>
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://joetechem.github.io/author/joe-seiler.html">Joe Seiler</a>
+        </address>
+<p>In <a href="https://joetechem.github.io/category/tutorials.html">Tutorials</a>.</p>
+<p>tags: <a href="https://joetechem.github.io/tag/pelican.html">pelican</a> <a href="https://joetechem.github.io/tag/wp.html">wp</a> <a href="https://joetechem.github.io/tag/cpanel.html">cpanel</a> <a href="https://joetechem.github.io/tag/whm.html">whm</a> </p>
+</footer><!-- /.post-info -->                <h1><strong>Standard</strong> WordPress Site Rollout</h1>
+<h4><em>10,000 ft.</em> Overview of <em>Standard</em> Steps:</h4>
+<ul>
+<li>Backup the Site Files &amp; Database  </li>
+<li>Update permalinks  </li>
+</ul>
+<h1>Backup the Website &amp; Database</h1>
+<p>It is always a good idea to make a copy of your website, before undergoing major changes. Below are steps for taking a <em>snapshot</em> of your website, Site …</p>
+                <a class="readmore" href="https://joetechem.github.io/ready-to-go-live.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
 
-  <!-- Footer -->
-  <footer>
-    <p>
-      Blog powered by <a href="http://getpelican.com/">Pelican</a>, 
-      which takes great advantage of <a href="http://python.org">Python</a>.
-      Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
-    </p>
-  </footer>
+                            <li><a href="https://www.linkedin.com/in/josef-seiler-315560111">linkedin</a></li>
+                            <li><a href="https://github.com/joetechem">github</a></li>
+                            <li><a href="#">twitter</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
 
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
 
 </body>
 </html>

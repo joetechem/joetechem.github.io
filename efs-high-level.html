@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>EFS High Level</title>
+        <link rel="stylesheet" href="https://joetechem.github.io/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://joetechem.github.io/">Joe's Calepin </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="https://joetechem.github.io/category/aws.html">AWS</a></li>
+                    <li><a href="https://joetechem.github.io/category/tutorials.html">Tutorials</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://joetechem.github.io/efs-high-level.html" rel="bookmark"
+           title="Permalink to EFS High Level">EFS High Level</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-12-27T00:00:00-05:00">
+                Published: Thu 27 December 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://joetechem.github.io/author/joe-seiler.html">Joe Seiler</a>
+        </address>
+<p>In <a href="https://joetechem.github.io/category/aws.html">AWS</a>.</p>
+<p>tags: <a href="https://joetechem.github.io/tag/aws.html">aws</a> <a href="https://joetechem.github.io/tag/ec2.html">ec2</a> <a href="https://joetechem.github.io/tag/efs.html">efs</a> <a href="https://joetechem.github.io/tag/developer.html">developer</a> <a href="https://joetechem.github.io/tag/cloud.html">cloud</a> </p>
+</footer><!-- /.post-info -->      <h1>EFS - Elastic File System</h1>
+<p>Amazon Elastic File System (Amazon EFS) is a file storage service for Amazon EC2 instances. EFS provides a simple interface that allows you to create and configure file systems quickly and easily.  </p>
+<h2>The "Elastic" in Elastic File System</h2>
+<ul>
+<li>Storage capacity is elastic, growing and shrinking automatically as you add and remove files  <ul>
+<li>so your applications have the storage they need, when they need it.  </li>
+</ul>
+</li>
+</ul>
+<p><center>  </p>
+<p><strong>You cannot mount an EBS volume to more than on EC2 instance at one time.</strong><br>
+This is what EFS allows you to do<br>
+<strong>EFS allows multiple EC2 instances to connect to it</strong>
+Data is stored across multiple AZ's within a region.<br>
+EFS is Block-Based storage (as opposed to Object-Based in S3)<br>
+You can share files with between EC2 instances (EFS and EC2 instances must share the same Security Group to do this)<br>
+Read after Write Consistency, like S3  </p>
+<p></center>  </p>
+<h2>EFS Features</h2>
+<ul>
+<li>Supports the Network File System version 4 (NFSv4) protocol  </li>
+<li>You only pay for the storage you use (no pre-provisioning required)  </li>
+<li>Can scale up to the PETABYTES  </li>
+<li>Can support thousands of concurrent NFS connections  </li>
+<li>Data is stored across multiple Availability Zones within a Region  </li>
+<li>Share files between EC2 instances  <ul>
+<li>Ensure they the same Security Group assignment  </li>
+<li>Ensure the Security Group has the NFS rule attached to it  </li>
+</ul>
+</li>
+</ul>
+<p>With EFS, a Load Balancer and EC2 instances provisioned with shared security groups and in the same AZ,<br>
+you can have multiple EC2 instances accessing the same files.  </p>
+<ul>
+<li>You can also apply to EFS, user-level and directory-level permissions  <ul>
+<li>So you can make certain directories, or files restricted in EFS,  <ul>
+<li>this would be universal across all EC2 instances.  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://www.linkedin.com/in/josef-seiler-315560111">linkedin</a></li>
+                            <li><a href="https://github.com/joetechem">github</a></li>
+                            <li><a href="#">twitter</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
