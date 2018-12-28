@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Calepin Joe - Amazon</title><link href="https://joetechem.github.io/" rel="alternate"></link><link href="https://joetechem.github.io/feeds/'amazon'.atom.xml" rel="self"></link><id>https://joetechem.github.io/</id><updated>2018-12-27T00:00:00-05:00</updated><entry><title>AWS CLI</title><link href="https://joetechem.github.io/aws-cli.html" rel="alternate"></link><published>2018-12-27T00:00:00-05:00</published><updated>2018-12-27T00:00:00-05:00</updated><author><name>Joe Seiler</name></author><id>tag:joetechem.github.io,2018-12-27:/aws-cli.html</id><summary type="html">&lt;h1&gt;AWS CLI - Using IAM User Credentials&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html"&gt;AWS - Configure CLI&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html"&gt;AWS - CLI Profiles&lt;/a&gt;  &lt;/p&gt;
+&lt;h2&gt;Firing Up AWS CLI&lt;/h2&gt;
+&lt;h4&gt;Configure AWS Credentials&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;Use the credentials of the aws account that has proper aws services access for what you are doing.&lt;/em&gt;&lt;br&gt;
+Get the credentials from the &lt;code&gt;.csv&lt;/code&gt; file you save and put somewhere safe …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;AWS CLI - Using IAM User Credentials&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html"&gt;AWS - Configure CLI&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html"&gt;AWS - CLI Profiles&lt;/a&gt;  &lt;/p&gt;
+&lt;h2&gt;Firing Up AWS CLI&lt;/h2&gt;
+&lt;h4&gt;Configure AWS Credentials&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;Use the credentials of the aws account that has proper aws services access for what you are doing.&lt;/em&gt;&lt;br&gt;
+Get the credentials from the &lt;code&gt;.csv&lt;/code&gt; file you save and put somewhere safe when you first created the aws user account (either through IAM user, or your root aws account)&lt;br&gt;
+&lt;em&gt;while in root:&lt;/em&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aws configure
+AWS Access Key ID &lt;span class="o"&gt;[&lt;/span&gt;None&lt;span class="o"&gt;]&lt;/span&gt;: access key ID here  
+AWS Secret Access Key &lt;span class="o"&gt;[&lt;/span&gt;None&lt;span class="o"&gt;]&lt;/span&gt;: secret access key here
+Default region name &lt;span class="o"&gt;[&lt;/span&gt;None&lt;span class="o"&gt;]&lt;/span&gt;: your region
+Default output format &lt;span class="o"&gt;[&lt;/span&gt;None&lt;span class="o"&gt;]&lt;/span&gt;:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Test an AWS CLI command:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aws s3 ls
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Above command will show you all your buckets from around the world (because S3 is a global service)  &lt;/p&gt;
+&lt;h4&gt;Get list of AWS CLI commands for particular service:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aws s3 &lt;span class="nb"&gt;help&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;See where the credentials are being stored:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~
+ls
+&lt;span class="nb"&gt;cd&lt;/span&gt; .aws
+ls
+nano credentials
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Because these credentials could potentially be "hacked", it is MORE SECURE to use IAM Roles instead of using your root account for provisioning, deploying, and documenting (i.e. GitHub).  &lt;/p&gt;
+&lt;h2&gt;Self Destruct EC2 Instance from AWS CLI&lt;/h2&gt;
+&lt;h4&gt;get EC2 instance's ID&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aws ec2 describe-instances
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Locate the Instance ID of the one you want terminated.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aws ec2 terminate-instances --instance-ids i-0a6888aa0caabd8f3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Having User credentials stored on an EC2 instance is a HUGE security risk.&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;Do not use IAM Users for the command line wherever possible, but if you are using it on your laptop, desktop or anything outside of AWS, then you will need a User with programmatic access.  &lt;/p&gt;
+&lt;p&gt;So, if you accidently upload your code to GitHub that has your Access Key ID and Secret Access Key, the best (only) way to resolve the issue is to delete the User and create a new one, or regenerate the credentials.  &lt;/p&gt;
+&lt;p&gt;Use IAM Roles over IAM Users wherever possible.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;AWS CLI - Using Roles&lt;/h1&gt;
+&lt;h2&gt;Identity Access Management Roles&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://aws.amazon.com/blogs/security/new-attach-an-aws-iam-role-to-an-existing-amazon-ec2-instance-by-using-the-aws-cli/"&gt;AWS Switching Roles using CLI&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://aws.amazon.com/blogs/security/easily-replace-or-attach-an-iam-role-to-an-existing-ec2-instance-by-using-the-ec2-console/"&gt;AWS Switching Roles using Console&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you used an IAM User account to provision a cluster of EC2 instances, and someone gained access to the User credentials for one of them, you would have to change the credentials for every other EC2 instance. This is an administrated BURDEN!  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IAM Roles are global, it does not matter which you Region you create it in, it will be avilable across all Regions.&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It is possible to attach a Role to running EC2 instance&lt;/strong&gt;  &lt;/p&gt;
+&lt;h2&gt;IAM/S3 Lab&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a new IAM Role with S3 Full Access  &lt;/li&gt;
+&lt;li&gt;Launch an EC2 instance with the S3 Full Access role attached  &lt;/li&gt;
+&lt;li&gt;SSH into the new instance  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;See contents of S3&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aws s3 ls
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This command works straight away, because the IAM Role with full S3 admin access is attached to this instance, giving it the permissions it needs to access S3.  &lt;/p&gt;
+&lt;p&gt;You can test by following steps above to find the secret directory with the credentials (it isn't there).  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;When using an IAM Role  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Don't need to store your credentials locally&lt;/li&gt;
+&lt;li&gt;if your credentials change, you don't need to login into your EC2 instances and update them  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you don't provision the EC2 instance with the IAM Role not attached,  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can attach a Role to an EC2 instance while it is running&lt;ul&gt;
+&lt;li&gt;via the CLI or AWS Console  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;CLI Commands - Developer Associate Exam - lab&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Create new IAM Role:  &lt;ul&gt;
+&lt;li&gt;Service = EC2  &lt;/li&gt;
+&lt;li&gt;Permissions = Admin Access  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Create new EC2 Instance with IAM Role attached  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Provision an EC2 Instance from the CLI:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aws configure  
+&lt;span class="c1"&gt;# leave access key ID and secret access blank  &lt;/span&gt;
+&lt;span class="c1"&gt;# Use the Region you are in for the Default region name&lt;/span&gt;
+&lt;span class="c1"&gt;# leave output format blank&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3 Specific Commands for the Developer Associate Exam&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:"&gt;AWS CLI Command Reference&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;You don't need to memorize any commands, just need to recognize the language they use.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Four important commands to remember:&lt;/strong&gt;&lt;br&gt;
+1. Describe instances you currently have running&lt;br&gt;
+    - &lt;code&gt;aws ec2 describe-instances&lt;/code&gt;&lt;br&gt;
+2. Describe instances available to you, that you can provision instances from&lt;br&gt;
+    - &lt;code&gt;aws ec2 describe-images&lt;/code&gt;&lt;br&gt;
+3. Create an instance&lt;br&gt;
+    - &lt;code&gt;aws ec2 run-instances&lt;/code&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; *Don&amp;#39;t confuse start-instances with run-instances*
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Terminate an instance  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;aws ec2 terminate-instances&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;  &lt;/p&gt;
+&lt;h4&gt;To launch an instance in EC2-VPC:&lt;/h4&gt;
+&lt;p&gt;*The key pair named &lt;code&gt;MyKeyPair&lt;/code&gt; and the security group &lt;code&gt;sg-903004f8&lt;/code&gt; must exist.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aws ec2 run-instances --image-id ami-abc12345 --count &lt;span class="m"&gt;1&lt;/span&gt; --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-1a2b3c4d --subnet-id subnet-6e7f829e
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Terminate Instance Command&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html"&gt;terminate-instance&lt;/a&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aws ec2 terminate-instances --instance-ids i-1234567890abcdef0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Bash Scripting&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Bash Script:&lt;/strong&gt; a list of AWS command lines that will be run after an instance EC2 launches.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Good idea to create your bash script while trying out the commands in a test instance&lt;/strong&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;created &lt;em&gt;index.html&lt;/em&gt;  &lt;/li&gt;
+&lt;li&gt;created new S3 bucket, &lt;em&gt;mysimplebashbucket&lt;/em&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;All S3 buckets are private by default&lt;/strong&gt;&lt;br&gt;
+* Create new IAM Role:&lt;br&gt;
+    - Service = EC2&lt;br&gt;
+    - Permissions = Admin Access  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;started &lt;em&gt;simplebashscript.txt&lt;/em&gt;&lt;br&gt;
+&lt;code&gt;bash  
+    #!/bin/bash
+    yum update -y&lt;/code&gt;  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;created EC2 instance with new IAM Role attached  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SSH into instance  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yum install httpd -y&lt;/code&gt; to install Apache  &lt;ul&gt;
+&lt;li&gt;update bash txt with new commands  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;service httpd start&lt;/code&gt; start the Apache service  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chkconfig httpd on&lt;/code&gt; make sure service automatically starts in case instance reboots  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;aws s3 ls&lt;/code&gt; check contents of S3 (also good to check the correct Role/Permissions are attached)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;aws s3 cp s3://mysimplebashbucket/index.html /var/www/html&lt;/code&gt; copy from s3 bucket to /var/www/html directory  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Install PHP and Composer&lt;/h1&gt;
+&lt;h2&gt;Lab - Setting Up the PHP SDK&lt;/h2&gt;
+&lt;h4&gt;bash script for S3&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+yum update -y
+yum install httpd24 php56 git -y
+service httpd start
+chkconfig httpd on
+&lt;span class="nb"&gt;cd&lt;/span&gt; /var/www/html
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;?php phpinfo();?&amp;gt;&amp;quot;&lt;/span&gt; &amp;gt; test.php
+git clone https://github.com/acloudguru/s3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Type in the instance's &lt;code&gt;publicIPaddress/test.php&lt;/code&gt; into browser, to check if the script worked.  &lt;/p&gt;
+&lt;p&gt;From https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/getting-started_installation.html insert the commands to install AWS SDK for PHP version 3:  &lt;/p&gt;
+&lt;h4&gt;while in root, /var/www/html&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -sS https://getcomposer.org/installer &lt;span class="p"&gt;|&lt;/span&gt; php
+php composer.phar require aws/aws-sdk-php
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Everytime you are using a PHP script to use the SDK, you need to run the &lt;code&gt;autoload.php&lt;/code&gt; first  &lt;/p&gt;
+&lt;h4&gt;autoload.php contents:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class="c1"&gt;// autoload.php @generated by Composer&lt;/span&gt;
+
+&lt;span class="k"&gt;require_once&lt;/span&gt; &lt;span class="no"&gt;__DIR__&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/composer/autoload_real.php&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;ComposerAutoloaderInit3b67dfc3d40d2cd9089a5411e8f40636&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="na"&gt;getLoader&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Lab - Interacting with S3 using the PHP SDK&lt;/h2&gt;
+&lt;h4&gt;While logged in as root in the same instance as above:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /var/www/html/s3
+ls
+nano createbucket.php
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;What happens:&lt;br&gt;
+* Type instance's &lt;code&gt;publicIPaddress/createbucket.php&lt;/code&gt; in browser&lt;br&gt;
+    - a new bucket is created in S3&lt;br&gt;
+    - click the link that comes up on each page&lt;br&gt;
+        - first link, uploads a simple text file&lt;br&gt;
+        - second link, to read the file&lt;br&gt;
+        - third link, deletes the file object from the bucket&lt;br&gt;
+        - fourth link, deletes the bucket if it is empty (and it is)  &lt;/p&gt;
+&lt;h1&gt;EC2 Instance Metadata&lt;/h1&gt;
+&lt;p&gt;How to get an instance's matadata while logged into it.  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html"&gt;aws source&lt;/a&gt;  &lt;/p&gt;
+&lt;h4&gt;IP Address to remember for the exam:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl http://169.254.169.254/latest/meta-data/  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Get instance's public IP address:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl http://169.254.169.254/latest/meta-data/public-ipv4
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Returns META DATA, not user data!&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;Use IP address, 169.254.169.254&lt;/strong&gt;    &lt;/p&gt;</content><category term="aws"></category><category term="ec2"></category><category term="developer"></category><category term="cloud"></category><category term="cli"></category></entry><entry><title>EC2 Summary</title><link href="https://joetechem.github.io/ec2-summary.html" rel="alternate"></link><published>2018-12-27T00:00:00-05:00</published><updated>2018-12-27T00:00:00-05:00</updated><author><name>Joe Seiler</name></author><id>tag:joetechem.github.io,2018-12-27:/ec2-summary.html</id><summary type="html">&lt;h1&gt;EC2 - Summary/Exam Tips&lt;/h1&gt;
+&lt;p&gt;https://aws.amazon.com/ec2/  &lt;/p&gt;
+&lt;p&gt;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Know differences between;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;On-Demand  &lt;/li&gt;
+&lt;li&gt;Spot  &lt;/li&gt;
+&lt;li&gt;Reserved  &lt;/li&gt;
+&lt;li&gt;Dedicated Hosts  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remember with spot instances;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you terminate the instance, you pay for the hour  &lt;/li&gt;
+&lt;li&gt;If AWS terminates the spot instance (becasue spot price …&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;EC2 - Summary/Exam Tips&lt;/h1&gt;
+&lt;p&gt;https://aws.amazon.com/ec2/  &lt;/p&gt;
+&lt;p&gt;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Know differences between;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;On-Demand  &lt;/li&gt;
+&lt;li&gt;Spot  &lt;/li&gt;
+&lt;li&gt;Reserved  &lt;/li&gt;
+&lt;li&gt;Dedicated Hosts  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remember with spot instances;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you terminate the instance, you pay for the hour  &lt;/li&gt;
+&lt;li&gt;If AWS terminates the spot instance (becasue spot price went above bid price), you get the hour it was terminated in for free.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;EC2 - Instance Types &lt;em&gt;DrMcGIFTPX&lt;/em&gt;&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Family&lt;/th&gt;
+&lt;th&gt;Specialty&lt;/th&gt;
+&lt;th&gt;Use Case&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;D2&lt;/td&gt;
+&lt;td&gt;Dense Storage&lt;/td&gt;
+&lt;td&gt;Filservers/Data Warehousing/Hadoop&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;R4&lt;/td&gt;
+&lt;td&gt;Memory Optimized&lt;/td&gt;
+&lt;td&gt;Memory Intensive Apps/DBs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M4&lt;/td&gt;
+&lt;td&gt;General Purpose&lt;/td&gt;
+&lt;td&gt;Application Servers&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C4&lt;/td&gt;
+&lt;td&gt;Compute Optimized&lt;/td&gt;
+&lt;td&gt;CPU Intensive Apps/DBs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;G2&lt;/td&gt;
+&lt;td&gt;Graphics Intensive&lt;/td&gt;
+&lt;td&gt;Video Encoding/3D App Streaming&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;I2&lt;/td&gt;
+&lt;td&gt;High Speed Storage&lt;/td&gt;
+&lt;td&gt;NoSQL DBs, Data Warehousing etc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F1&lt;/td&gt;
+&lt;td&gt;Field Programmable Gate Array&lt;/td&gt;
+&lt;td&gt;Hardware acceleration for your code&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T2&lt;/td&gt;
+&lt;td&gt;Lowest Cost, General Purpose&lt;/td&gt;
+&lt;td&gt;Web Servers/Small DBs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;P2&lt;/td&gt;
+&lt;td&gt;Graphics/General Purpose GPU&lt;/td&gt;
+&lt;td&gt;Machine Learning, Bit Coin Mining&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;X1&lt;/td&gt;
+&lt;td&gt;Memory Optimized&lt;/td&gt;
+&lt;td&gt;SAP HANA/Apache Spark etc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;EBS Consists of:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SSD, General Purpose - GP2 (Up to 10,000 IOPS)  &lt;/li&gt;
+&lt;li&gt;SSD, Provisioned IOPS - IO1 (More than 10,000 IOPS)  &lt;/li&gt;
+&lt;li&gt;HDD, Throuput Optimized - ST1 - Frequently accessed workloads (can't be used as boot volumes, can only be additional attached volume to an EC2 instance)  &lt;/li&gt;
+&lt;li&gt;HDD, Cold - SC1 - less frequently accessed data (can't be used as boot volumes, can only be additional attached volume to an EC2 instance)  &lt;/li&gt;
+&lt;li&gt;HDD, Magnetic - Standard - cheap, infrequently accessed storage (can have this as boot volume)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;You cannot mount 1 EBS volume to multiple EC2 instances, instead use EFS&lt;/strong&gt;    &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Termination Protection is turned off by default, you must turn it on.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;On an EBS-Backed instance, the default action is for the root EBS volume to be deleted when the instance is terminated.  &lt;/li&gt;
+&lt;li&gt;Root Volumes cannot be encrypted by default, you need a third party tool (such as bit locker etc) to encrypt the root volume  &lt;/li&gt;
+&lt;li&gt;Additional volumes can be encrypted  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Volumes &amp;amp; Snapshots&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Volumes exist on EBS  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Virtual Hard Disk  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Snapshots exist on S3&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can take a snapshot of a volume, this will store that volume on S3.  &lt;/li&gt;
+&lt;li&gt;Snapshots are point-in-time copies of Volumes  &lt;/li&gt;
+&lt;li&gt;Snapshots are incremental, this means that only the blocks that have changed since your last snapshot are moved to S3.  &lt;/li&gt;
+&lt;li&gt;The first snapshot takes some time to create, additional snapshots afterwards are created faster  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Volumes vs Snapshot - Security&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Snapshots of encrypted volumes are encrypted automatically.  &lt;/li&gt;
+&lt;li&gt;Volumes restored from encrypted snapshots are encrypted automatically.  &lt;/li&gt;
+&lt;li&gt;You can share snapshots, but only if the are unencrypted.  &lt;ul&gt;
+&lt;li&gt;These snpashots can be shared with other AWS accounts or you can make them public in the Amazon Marketplace  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Snapshots of Root Device Volumes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;To create a snapshot for Amazon EBS volumes that serve as root devices, you should stop the instance before taking the snapshot  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;EBS vs Instance Store&lt;/h2&gt;
+&lt;h4&gt;How can I take a Snapshot of a RAID Array?&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Problem - Take a snapshot, the snapshot excludes data held in the cache by applications and the OS. This tends to not matter on a single volumes; however, using multiple volumes in a RAID array, this can be a problem due to interdependencies of the array.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Solution - Take an application consistent snapshot  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Stop the application from writing to disk  &lt;/li&gt;
+&lt;li&gt;Flush all caches to the disk.  &lt;/li&gt;
+&lt;li&gt;How can we do this?  &lt;ul&gt;
+&lt;li&gt;Freeze the file system  &lt;/li&gt;
+&lt;li&gt;Unmount the RAID Array  &lt;/li&gt;
+&lt;li&gt;Shutting down the associated EC2 instance  &lt;/li&gt;
+&lt;li&gt;Then take the snapshot  &lt;/li&gt;
+&lt;li&gt;&lt;em&gt;essentially, &lt;strong&gt;you are trying to stop any kind of I/O being read from that RAID Array&lt;/strong&gt;&lt;/em&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;CloudWatch&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard Monitoring = 5 Min  &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Detailed Monitoring = 1 Minute  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CloudWatch is for performance monitoring  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;CloudTrail is for auditing  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;What can I do with CloudWatch?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dashboards&lt;/strong&gt; - creates awesome dashboards to see what is happening with your AWS environment  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alarms&lt;/strong&gt; = Allows you to set Alarms that notify you when particular thresholds are hit.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Events&lt;/strong&gt; - CloudWatch Events helps you to respond to state changes in your AWS resources  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logs&lt;/strong&gt; - CloudWatch Logs helps you to aggregate, monitor, and store logs.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;IAM Roles&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Roles are more secure than storing your access key and secret access key on individual EC2 instances.  &lt;/li&gt;
+&lt;li&gt;Roles are easier to manage from a security perspective  &lt;/li&gt;
+&lt;li&gt;Roles can be assigned to an EC2 instance AFTER it has been provisioned using both the command line and the AWS console. -takes effect immediately  &lt;ul&gt;
+&lt;li&gt;can also change the role's policies at any time -also takes effect immediately  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Roles are universal, you can use them in any Region  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Instance Met-data&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Use to get info about an instance (such as public ip)  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl http://169.256.169.256/latest/meta-data/&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;EFS Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Supports the Network File System 4 (NFSv4) protocol  &lt;/li&gt;
+&lt;li&gt;You only pay for the storage you use (no pre-provisioning required)  &lt;/li&gt;
+&lt;li&gt;Can scale up to the PETABYTES  &lt;/li&gt;
+&lt;li&gt;Can support thousands of concurrent NFS connection  &lt;/li&gt;
+&lt;li&gt;Data is stored across multiple AZ's within a region  &lt;/li&gt;
+&lt;li&gt;Read After Write Consistency  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Lambda&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A compute service where you can upload your code and create a Lambda Function.  &lt;/li&gt;
+&lt;li&gt;AWS takes care of the provisioning and managing the servers that you use to run the code.  &lt;/li&gt;
+&lt;li&gt;Don't have to worry about OS's, patching, scaling, etc.  &lt;/li&gt;
+&lt;li&gt;You can use Lambda ins the following ways:  &lt;ul&gt;
+&lt;li&gt;As an event-driven compute service where AWS Lambda runs your code in response to events. These events could be changes to data in an AMazon S3 bucket or an Amazon DynamoDB table.  &lt;/li&gt;
+&lt;li&gt;As a compute service to run your code in response to HTTP requests using Amazon API Gateway or API calls made using AWS SDKs. This is what A Cloud Guru does.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;ECS - Elastic Container Service&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The Elastic Container Service is a service that manages running Docker containers on a group of your EC2 instances.  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="aws"></category><category term="ec2"></category><category term="developer"></category><category term="cloud"></category></entry><entry><title>EFS High Level</title><link href="https://joetechem.github.io/efs-high-level.html" rel="alternate"></link><published>2018-12-27T00:00:00-05:00</published><updated>2018-12-27T00:00:00-05:00</updated><author><name>Joe Seiler</name></author><id>tag:joetechem.github.io,2018-12-27:/efs-high-level.html</id><summary type="html">&lt;h1&gt;EFS - Elastic File System&lt;/h1&gt;
+&lt;p&gt;Amazon Elastic File System (Amazon EFS) is a file storage service for Amazon EC2 instances. EFS provides a simple interface that allows you to create and configure file systems quickly and easily.  &lt;/p&gt;
+&lt;h2&gt;The "Elastic" in Elastic File System&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Storage capacity is elastic, growing and shrinking automatically …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;EFS - Elastic File System&lt;/h1&gt;
+&lt;p&gt;Amazon Elastic File System (Amazon EFS) is a file storage service for Amazon EC2 instances. EFS provides a simple interface that allows you to create and configure file systems quickly and easily.  &lt;/p&gt;
+&lt;h2&gt;The "Elastic" in Elastic File System&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Storage capacity is elastic, growing and shrinking automatically as you add and remove files  &lt;ul&gt;
+&lt;li&gt;so your applications have the storage they need, when they need it.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;center&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;You cannot mount an EBS volume to more than on EC2 instance at one time.&lt;/strong&gt;&lt;br&gt;
+This is what EFS allows you to do&lt;br&gt;
+&lt;strong&gt;EFS allows multiple EC2 instances to connect to it&lt;/strong&gt;
+Data is stored across multiple AZ's within a region.&lt;br&gt;
+EFS is Block-Based storage (as opposed to Object-Based in S3)&lt;br&gt;
+You can share files with between EC2 instances (EFS and EC2 instances must share the same Security Group to do this)&lt;br&gt;
+Read after Write Consistency, like S3  &lt;/p&gt;
+&lt;p&gt;&lt;/center&gt;  &lt;/p&gt;
+&lt;h2&gt;EFS Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Supports the Network File System version 4 (NFSv4) protocol  &lt;/li&gt;
+&lt;li&gt;You only pay for the storage you use (no pre-provisioning required)  &lt;/li&gt;
+&lt;li&gt;Can scale up to the PETABYTES  &lt;/li&gt;
+&lt;li&gt;Can support thousands of concurrent NFS connections  &lt;/li&gt;
+&lt;li&gt;Data is stored across multiple Availability Zones within a Region  &lt;/li&gt;
+&lt;li&gt;Share files between EC2 instances  &lt;ul&gt;
+&lt;li&gt;Ensure they the same Security Group assignment  &lt;/li&gt;
+&lt;li&gt;Ensure the Security Group has the NFS rule attached to it  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With EFS, a Load Balancer and EC2 instances provisioned with shared security groups and in the same AZ,&lt;br&gt;
+you can have multiple EC2 instances accessing the same files.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can also apply to EFS, user-level and directory-level permissions  &lt;ul&gt;
+&lt;li&gt;So you can make certain directories, or files restricted in EFS,  &lt;ul&gt;
+&lt;li&gt;this would be universal across all EC2 instances.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="aws"></category><category term="ec2"></category><category term="efs"></category><category term="developer"></category><category term="cloud"></category></entry></feed>
